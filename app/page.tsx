@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/logo"
 
 export default function Home() {
   return (
     <div>
-      <Button>Hello world</Button>
+      <Logo />
     </div>
   )
 }
