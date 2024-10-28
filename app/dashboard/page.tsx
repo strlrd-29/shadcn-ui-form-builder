@@ -13,7 +13,7 @@ import {
 import { SidebarLeft } from "@/components/sidebar-left"
 import { SidebarRight } from "@/components/sidebar-right"
 
-export default function Home() {
+export default function Page() {
   return (
     <SidebarProvider>
       <SidebarLeft />
