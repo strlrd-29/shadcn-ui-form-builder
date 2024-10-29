@@ -17,9 +17,9 @@ export default function Home() {
   return (
     <SidebarProvider>
       <SidebarLeft />
-      <SidebarInset>
+      <SidebarInset className="px-4">
         <header className="sticky top-0 flex h-14 shrink-0 items-center gap-2 bg-background">
-          <div className="flex flex-1 items-center gap-2 px-3">
+          <div className="flex flex-1 items-center gap-2">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -33,7 +33,7 @@ export default function Home() {
             </Breadcrumb>
           </div>
         </header>
-        <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 rounded-md border shadow-sm">
+        <div className="mx-auto flex w-full flex-col gap-4 rounded-md border shadow-sm md:w-1/2">
           <div className="flex items-center gap-1.5 border-b p-4">
             <div
               className="h-2.5 w-2.5 rounded-full bg-red-500"
