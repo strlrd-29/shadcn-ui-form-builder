@@ -7,10 +7,10 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Shadcn/ui Form Builder",
-    template: "%s - Shadcn/ui Form Builder",
+    default: "Shadcn Form Builder",
+    template: "%s - Shadcn Form Builder",
   },
-  keywords: ["React", "Shadcn/ui", "React hook form", "Zod"],
+  keywords: ["React", "Shadcn", "React hook form", "Zod"],
   authors: [
     {
       name: "ouassim",
