@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { FormFieldWrapper } from "@/components/form-field-wrapper"
 
@@ -167,6 +168,18 @@ export function renderFormFieldComponent({
             </RadioGroup>
           </FormControl>
           <FormMessage />
+        </FormItem>
+      )
+    case FieldType.SWITCH:
+      return (
+        <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+          <div className="space-y-0.5">
+            <FormLabel className="text-base">{formField.label}</FormLabel>
+            <FormDescription>{formField.description}</FormDescription>
+          </div>
+          <FormControl>
+            <Switch checked={field.value} onCheckedChange={field.onChange} />
+          </FormControl>
         </FormItem>
       )
   }

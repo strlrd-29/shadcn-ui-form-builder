@@ -10,6 +10,7 @@ export enum FieldType {
   SELECT = "SELECT",
   DATE = "DATE",
   RADIO_GROUP = "RADIO_GROUP",
+  SWITCH = "SWITCH",
 }
 
 interface FormFieldBaseType {
@@ -69,6 +70,10 @@ export interface RadioGroupFormFieldType extends FormFieldBaseType {
   choices: ChoiceItem[]
 }
 
+export interface SwitchFormFieldType extends FormFieldBaseType {
+  type: FieldType.SWITCH
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
@@ -78,3 +83,4 @@ export type FormField =
   | SelectFormFieldType
   | DateFormFieldType
   | RadioGroupFormFieldType
+  | SwitchFormFieldType

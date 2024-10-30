@@ -6,6 +6,7 @@ import {
   Hash,
   SquareCheck,
   Text,
+  ToggleLeft,
   Type,
 } from "lucide-react"
 
@@ -100,5 +101,12 @@ export const fields: FormField[] = [
         label: "Nothing",
       },
     ],
+  },
+  {
+    type: FieldType.SWITCH,
+    name: "Switch",
+    label: "Marketing emails",
+    description: "Receive emails about new products, features, and more.",
+    Icon: ToggleLeft,
   },
 ]

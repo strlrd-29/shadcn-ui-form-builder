@@ -34,6 +34,9 @@ export function generateZodSchema(formFields: FormField[]) {
         const values = field.choices.map((choice) => choice.value as string)
         fieldSchema = z.enum(zodEnum(values))
         break
+      case FieldType.SWITCH:
+        fieldSchema = z.boolean().default(false)
+        break
     }
     formSchemaObject[field.name] = fieldSchema
   })
