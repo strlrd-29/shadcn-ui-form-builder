@@ -1,7 +1,7 @@
-import { ControllerRenderProps, UseFormReturn } from "react-hook-form"
+import * as React from "react"
+import type { UseFormReturn } from "react-hook-form"
 
-import { FieldType, FormField as FormFieldType } from "@/types/field"
-
+import type { FormField as FormFieldType } from "@/types/field"
 import {
   FormControl,
   FormDescription,
@@ -9,79 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form"
-import { Input } from "./ui/input"
-import { Textarea } from "./ui/textarea"
-
-interface RenderFormFieldComponentProps {
-  formField: FormFieldType
-  field: ControllerRenderProps<
-    {
-      [x: string]: any
-    },
-    string
-  >
-}
-
-function renderFormFieldComponent({
-  formField,
-  field,
-}: RenderFormFieldComponentProps) {
-  switch (formField.type) {
-    case FieldType.INPUT:
-      return (
-        <FormItem>
-          <FormLabel>{formField.label}</FormLabel>
-          <FormControl>
-            <Input placeholder={formField.placeholder} {...field} />
-          </FormControl>
-          <FormDescription>{formField.description}</FormDescription>
-          <FormMessage />
-        </FormItem>
-      )
-    case FieldType.TEXTAREA:
-      return (
-        <FormItem>
-          <FormLabel>{formField.label}</FormLabel>
-          <FormControl>
-            <Textarea
-              placeholder={formField.placeholder}
-              className="resize-none"
-              {...field}
-            />
-          </FormControl>
-          <FormDescription>{formField.description}</FormDescription>
-          <FormMessage />
-        </FormItem>
-      )
-    case FieldType.NUMBER_INPUT:
-      return (
-        <FormItem>
-          <FormLabel>{formField.label}</FormLabel>
-          <FormControl>
-            <Input
-              placeholder={formField.placeholder}
-              {...field}
-              type="number"
-            />
-          </FormControl>
-          <FormDescription>{formField.description}</FormDescription>
-          <FormMessage />
-        </FormItem>
-      )
-    case FieldType.EMAIL:
-      return (
-        <FormItem>
-          <FormLabel>{formField.label}</FormLabel>
-          <FormControl>
-            <Input placeholder={formField.placeholder} {...field} />
-          </FormControl>
-          <FormDescription>{formField.description}</FormDescription>
-          <FormMessage />
-        </FormItem>
-      )
-  }
-}
+} from "@/components/ui/form"
+import { renderFormFieldComponent } from "@/components/render-form-field-component"
 
 interface FieldProps {
   formField: FormFieldType
@@ -94,12 +23,23 @@ interface FieldProps {
   >
 }
 
-export function Field({ formField, form }: FieldProps) {
+export const Field = React.memo(({ formField, form }: FieldProps) => {
   return (
     <FormField
       control={form.control}
       name={formField.name}
-      render={({ field }) => renderFormFieldComponent({ field, formField })}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{formField.label}</FormLabel>
+          <FormControl>
+            {renderFormFieldComponent({ field, formField })}
+          </FormControl>
+          <FormDescription>{formField.description}</FormDescription>
+          <FormMessage />
+        </FormItem>
+      )}
     />
   )
-}
+})
+
+Field.displayName = "Field"
