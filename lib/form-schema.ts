@@ -37,6 +37,9 @@ export function generateZodSchema(formFields: FormField[]) {
       case FieldType.SWITCH:
         fieldSchema = z.boolean().default(false)
         break
+      case FieldType.COMBOBOX:
+        fieldSchema = z.string()
+        break
     }
     formSchemaObject[field.name] = fieldSchema
   })

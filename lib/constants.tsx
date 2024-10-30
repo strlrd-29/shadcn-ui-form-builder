@@ -109,4 +109,22 @@ export const fields: FormField[] = [
     description: "Receive emails about new products, features, and more.",
     Icon: ToggleLeft,
   },
+  {
+    type: FieldType.COMBOBOX,
+    name: "Combobox",
+    label: "Language",
+    Icon: ChevronsUpDown,
+    description: "This is the language that will be used in the dashboard.",
+    choices: [
+      { label: "English", value: "en" },
+      { label: "French", value: "fr" },
+      { label: "German", value: "de" },
+      { label: "Spanish", value: "es" },
+      { label: "Portuguese", value: "pt" },
+      { label: "Russian", value: "ru" },
+      { label: "Japanese", value: "ja" },
+      { label: "Korean", value: "ko" },
+      { label: "Chinese", value: "zh" },
+    ],
+  },
 ]

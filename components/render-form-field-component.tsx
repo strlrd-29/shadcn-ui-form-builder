@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react"
 import type { ControllerRenderProps } from "react-hook-form"
 
 import { FieldType, type FormField as FormFieldType } from "@/types/field"
@@ -7,6 +7,14 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
 import {
   FormControl,
   FormDescription,
@@ -180,6 +188,62 @@ export function renderFormFieldComponent({
           <FormControl>
             <Switch checked={field.value} onCheckedChange={field.onChange} />
           </FormControl>
+        </FormItem>
+      )
+    case FieldType.COMBOBOX:
+      return (
+        <FormItem className="flex flex-col">
+          <FormLabel>{formField.label}</FormLabel>
+          <Popover>
+            <PopoverTrigger asChild>
+              <FormControl>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  className={cn(
+                    "justify-between",
+                    !field.value && "text-muted-foreground"
+                  )}
+                >
+                  {field.value
+                    ? formField.choices.find(
+                        (choice) => choice.value === field.value
+                      )?.label
+                    : "Select language"}
+                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              </FormControl>
+            </PopoverTrigger>
+            <PopoverContent className="p-0" align="start">
+              <Command>
+                <CommandInput placeholder="Search language..." />
+                <CommandList>
+                  <CommandEmpty>No language found.</CommandEmpty>
+                  <CommandGroup>
+                    {formField.choices.map((choice) => (
+                      <CommandItem
+                        value={choice.label}
+                        key={choice.value}
+                        onSelect={() => field.onChange(choice.value)}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            choice.value === field.value
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                        {choice.label}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
+          <FormDescription>{formField.description}</FormDescription>
+          <FormMessage />
         </FormItem>
       )
   }
