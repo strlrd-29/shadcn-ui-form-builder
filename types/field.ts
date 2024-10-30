@@ -6,6 +6,7 @@ export enum FieldType {
   TEXTAREA = "TEXTAREA",
   NUMBER_INPUT = "NUMBER_INPUT",
   EMAIL = "EMAIL",
+  CHECKBOX = "CHECKBOX",
 }
 
 interface FormFieldBaseType {
@@ -42,8 +43,13 @@ export interface EmailFormFieldType extends FormFieldBaseType {
   type: FieldType.EMAIL
 }
 
+export interface CheckboxFormFieldType extends FormFieldBaseType {
+  type: FieldType.CHECKBOX
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
   | NumberInputFormFieldType
   | EmailFormFieldType
+  | CheckboxFormFieldType
