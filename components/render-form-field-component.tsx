@@ -39,6 +39,7 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { FormFieldWrapper } from "@/components/form-field-wrapper"
+import { PasswordInput } from "@/components/password-input"
 
 interface RenderFormFieldComponentProps {
   formField: FormFieldType
@@ -245,6 +246,12 @@ export function renderFormFieldComponent({
           <FormDescription>{formField.description}</FormDescription>
           <FormMessage />
         </FormItem>
+      )
+    case FieldType.PASSWORD:
+      return (
+        <FormFieldWrapper {...formField}>
+          <PasswordInput placeholder={formField.placeholder} {...field} />
+        </FormFieldWrapper>
       )
   }
 }

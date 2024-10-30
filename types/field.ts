@@ -12,6 +12,7 @@ export enum FieldType {
   RADIO_GROUP = "RADIO_GROUP",
   SWITCH = "SWITCH",
   COMBOBOX = "COMBOBOX",
+  PASSWORD = "PASSWORD",
 }
 
 interface FormFieldBaseType {
@@ -80,6 +81,10 @@ export interface ComboboxFormFieldType extends FormFieldBaseType {
   choices: ChoiceItem[]
 }
 
+export interface PasswordFormFieldType extends FormFieldBaseType {
+  type: FieldType.PASSWORD
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
@@ -91,3 +96,4 @@ export type FormField =
   | RadioGroupFormFieldType
   | SwitchFormFieldType
   | ComboboxFormFieldType
+  | PasswordFormFieldType
