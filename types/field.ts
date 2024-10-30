@@ -7,6 +7,7 @@ export enum FieldType {
   NUMBER_INPUT = "NUMBER_INPUT",
   EMAIL = "EMAIL",
   CHECKBOX = "CHECKBOX",
+  SELECT = "SELECT",
 }
 
 interface FormFieldBaseType {
@@ -47,9 +48,20 @@ export interface CheckboxFormFieldType extends FormFieldBaseType {
   type: FieldType.CHECKBOX
 }
 
+interface ChoiceItem {
+  value: any
+  label: string
+}
+
+export interface SelectFormFieldType extends FormFieldBaseType {
+  type: FieldType.SELECT
+  choices: ChoiceItem[]
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
   | NumberInputFormFieldType
   | EmailFormFieldType
   | CheckboxFormFieldType
+  | SelectFormFieldType

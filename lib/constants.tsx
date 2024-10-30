@@ -1,4 +1,11 @@
-import { AtSign, Hash, SquareCheck, Text, Type } from "lucide-react"
+import {
+  AtSign,
+  ChevronsUpDown,
+  Hash,
+  SquareCheck,
+  Text,
+  Type,
+} from "lucide-react"
 
 import { FieldType, type FormField } from "@/types/field"
 
@@ -42,5 +49,27 @@ export const fields: FormField[] = [
     description:
       "You can manage your mobile notifications in the mobile settings page.",
     Icon: SquareCheck,
+  },
+  {
+    type: FieldType.SELECT,
+    name: "Select",
+    label: "Email",
+    placeholder: "Select a verified email to display",
+    description: "You can manage email addresses in your email settings.",
+    Icon: ChevronsUpDown,
+    choices: [
+      {
+        value: "m@example.com",
+        label: "m@example.com",
+      },
+      {
+        value: "m@google.com",
+        label: "m@google.com",
+      },
+      {
+        value: "m@support.com",
+        label: "m@support.com",
+      },
+    ],
   },
 ]

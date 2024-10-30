@@ -21,8 +21,12 @@ export function generateZodSchema(formFields: FormField[]) {
         break
       case FieldType.CHECKBOX:
         fieldSchema = z.boolean().default(false)
+        break
+      case FieldType.SELECT:
+        fieldSchema = z.string()
+        break
     }
-    formSchemaObject[field.name] = fieldSchema as z.ZodTypeAny // Ensure fieldSchema is of type ZodTypeAny
+    formSchemaObject[field.name] = fieldSchema
   })
 
   return z.object(formSchemaObject)

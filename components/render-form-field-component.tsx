@@ -7,8 +7,16 @@ import {
   FormDescription,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { FormFieldWrapper } from "@/components/form-field-wrapper"
 
@@ -66,6 +74,28 @@ export function renderFormFieldComponent({
             <FormLabel>{formField.label}</FormLabel>
             <FormDescription>{formField.description}</FormDescription>
           </div>
+        </FormItem>
+      )
+    case FieldType.SELECT:
+      return (
+        <FormItem>
+          <FormLabel>{formField.label}</FormLabel>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger>
+                <SelectValue placeholder={formField.placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              {formField.choices.map((choice) => (
+                <SelectItem value={choice.value} key={choice.value}>
+                  {choice.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <FormDescription>{formField.description}</FormDescription>
+          <FormMessage />
         </FormItem>
       )
   }
