@@ -1,5 +1,6 @@
 import {
   AtSign,
+  Calendar,
   ChevronsUpDown,
   Hash,
   SquareCheck,
@@ -71,5 +72,12 @@ export const fields: FormField[] = [
         label: "m@support.com",
       },
     ],
+  },
+  {
+    type: FieldType.DATE,
+    name: "Date",
+    label: "Date of birth",
+    description: "Your date of birth is used to calculate your age.",
+    Icon: Calendar,
   },
 ]

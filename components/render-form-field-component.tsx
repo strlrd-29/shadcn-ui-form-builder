@@ -1,6 +1,11 @@
+import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
 import type { ControllerRenderProps } from "react-hook-form"
 
 import { FieldType, type FormField as FormFieldType } from "@/types/field"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   FormControl,
@@ -10,6 +15,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import {
   Select,
   SelectContent,
@@ -41,7 +51,6 @@ export function renderFormFieldComponent({
           <Input placeholder={formField.placeholder} {...field} />
         </FormFieldWrapper>
       )
-
     case FieldType.TEXTAREA:
       return (
         <FormFieldWrapper {...formField}>
@@ -94,6 +103,41 @@ export function renderFormFieldComponent({
               ))}
             </SelectContent>
           </Select>
+          <FormDescription>{formField.description}</FormDescription>
+          <FormMessage />
+        </FormItem>
+      )
+    case FieldType.DATE:
+      return (
+        <FormItem className="flex flex-col">
+          <FormLabel>{formField.label}</FormLabel>
+          <Popover>
+            <PopoverTrigger asChild>
+              <FormControl>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "pl-3 text-left font-normal",
+                    !field.value && "text-muted-foreground"
+                  )}
+                >
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span>Pick a date</span>
+                  )}
+                  <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                </Button>
+              </FormControl>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                mode="single"
+                selected={field.value}
+                onSelect={field.onChange}
+              />
+            </PopoverContent>
+          </Popover>
           <FormDescription>{formField.description}</FormDescription>
           <FormMessage />
         </FormItem>

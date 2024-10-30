@@ -8,6 +8,7 @@ export enum FieldType {
   EMAIL = "EMAIL",
   CHECKBOX = "CHECKBOX",
   SELECT = "SELECT",
+  DATE = "DATE",
 }
 
 interface FormFieldBaseType {
@@ -58,6 +59,10 @@ export interface SelectFormFieldType extends FormFieldBaseType {
   choices: ChoiceItem[]
 }
 
+export interface DateFormFieldType extends FormFieldBaseType {
+  type: FieldType.DATE
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
@@ -65,3 +70,4 @@ export type FormField =
   | EmailFormFieldType
   | CheckboxFormFieldType
   | SelectFormFieldType
+  | DateFormFieldType
