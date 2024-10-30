@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useFormStore } from "@/stores/form"
 
 import { fields } from "@/lib/constants"
 import {
@@ -17,6 +18,7 @@ import {
 export function SidebarRight({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
+  const addFormField = useFormStore((state) => state.addFormField)
   return (
     <Sidebar
       collapsible="none"
@@ -30,13 +32,18 @@ export function SidebarRight({
           <SidebarGroupLabel>Fields</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {fields.map(({ name, Icon }) => (
-                <SidebarMenuItem key={name}>
-                  <SidebarMenuButton asChild>
-                    <a href="#">
-                      <Icon />
-                      <span>{name}</span>
-                    </a>
+              {fields.map((field) => (
+                <SidebarMenuItem key={field.name}>
+                  <SidebarMenuButton
+                    onClick={() =>
+                      addFormField({
+                        ...field,
+                        name: `${field.name}_${Math.random().toString().slice(-10)}`,
+                      })
+                    }
+                  >
+                    <field.Icon />
+                    <span>{field.name}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

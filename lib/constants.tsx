@@ -1,51 +1,30 @@
-import {
-  Calendar,
-  ChevronsUpDown,
-  CircleCheck,
-  Ellipsis,
-  SlidersHorizontal,
-  Text,
-  ToggleLeft,
-  Type,
-} from "lucide-react"
+import { Hash, Text, Type } from "lucide-react"
 
-import type { FieldType } from "@/types/field"
+import { FieldType, type FormField } from "@/types/field"
 
-export const fields: FieldType[] = [
+export const fields: FormField[] = [
   {
+    type: FieldType.INPUT,
     name: "Input",
+    label: "Username",
+    placeholder: "shadcn",
+    description: "This is your public display name.",
     Icon: Type,
   },
   {
+    type: FieldType.TEXTAREA,
     name: "Textarea",
+    label: "Bio",
+    placeholder: "Tell us a little bit about yourself",
+    description: "You can @mention other users and organizations.",
     Icon: Text,
   },
   {
-    name: "Select",
-    Icon: ChevronsUpDown,
-  },
-  {
-    name: "Date Picker",
-    Icon: Calendar,
-  },
-  {
-    name: "Checkbox",
-    Icon: CircleCheck,
-  },
-  {
-    name: "Switch",
-    Icon: ToggleLeft,
-  },
-  {
-    name: "Radio Group",
-    Icon: Ellipsis,
-  },
-  {
-    name: "Slider",
-    Icon: SlidersHorizontal,
-  },
-  {
-    name: "Combobox",
-    Icon: ChevronsUpDown,
+    type: FieldType.NUMBER_INPUT,
+    name: "Number Input",
+    label: "Age",
+    placeholder: "24",
+    description: "Input your age in dog years.",
+    Icon: Hash,
   },
 ]
