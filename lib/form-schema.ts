@@ -2,6 +2,8 @@ import * as z from "zod"
 
 import { FieldType, FormField } from "@/types/field"
 
+const zodEnum = <T>(arr: T[]): [T, ...T[]] => arr as [T, ...T[]]
+
 export function generateZodSchema(formFields: FormField[]) {
   const formSchemaObject: Record<string, z.ZodType<any, any>> = {}
   formFields.forEach((field) => {
@@ -27,6 +29,10 @@ export function generateZodSchema(formFields: FormField[]) {
         break
       case FieldType.DATE:
         fieldSchema = z.date()
+        break
+      case FieldType.RADIO_GROUP:
+        const values = field.choices.map((choice) => choice.value as string)
+        fieldSchema = z.enum(zodEnum(values))
         break
     }
     formSchemaObject[field.name] = fieldSchema

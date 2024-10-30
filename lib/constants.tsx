@@ -2,6 +2,7 @@ import {
   AtSign,
   Calendar,
   ChevronsUpDown,
+  CircleDot,
   Hash,
   SquareCheck,
   Text,
@@ -79,5 +80,25 @@ export const fields: FormField[] = [
     label: "Date of birth",
     description: "Your date of birth is used to calculate your age.",
     Icon: Calendar,
+  },
+  {
+    type: FieldType.RADIO_GROUP,
+    name: "Radio Group",
+    label: "Notify me about...",
+    Icon: CircleDot,
+    choices: [
+      {
+        value: "all",
+        label: "All new messages",
+      },
+      {
+        value: "mentions",
+        label: "Direct messages and mentions",
+      },
+      {
+        value: "none",
+        label: "Nothing",
+      },
+    ],
   },
 ]
