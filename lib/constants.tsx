@@ -1,4 +1,4 @@
-import { Hash, Text, Type } from "lucide-react"
+import { AtSign, Hash, Text, Type } from "lucide-react"
 
 import { FieldType, type FormField } from "@/types/field"
 
@@ -26,5 +26,13 @@ export const fields: FormField[] = [
     placeholder: "24",
     description: "Input your age in dog years.",
     Icon: Hash,
+  },
+  {
+    type: FieldType.EMAIL,
+    name: "Email",
+    label: "Email",
+    placeholder: "m@example.com",
+    description: "We won't spam you, we promise.",
+    Icon: AtSign,
   },
 ]

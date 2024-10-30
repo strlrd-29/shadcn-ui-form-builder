@@ -1,3 +1,5 @@
+"use client"
+
 import { useFormStore } from "@/stores/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -7,9 +9,8 @@ import { useShallow } from "zustand/shallow"
 import { FormState } from "@/types/form-store"
 import { generateZodSchema } from "@/lib/form-schema"
 import { Button } from "@/components/ui/button"
+import { Form } from "@/components/ui/form"
 import { Field } from "@/components/field"
-
-import { Form } from "./ui/form"
 
 const selector = (state: FormState) => ({
   formFields: state.formFields,

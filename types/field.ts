@@ -5,6 +5,7 @@ export enum FieldType {
   INPUT = "INPUT",
   TEXTAREA = "TEXTAREA",
   NUMBER_INPUT = "NUMBER_INPUT",
+  EMAIL = "EMAIL",
 }
 
 interface FormFieldBaseType {
@@ -37,7 +38,12 @@ export interface NumberInputFormFieldType extends FormFieldBaseType {
   max?: number
 }
 
+export interface EmailFormFieldType extends FormFieldBaseType {
+  type: FieldType.EMAIL
+}
+
 export type FormField =
   | InputFormFieldType
   | TextareaFormFieldType
   | NumberInputFormFieldType
+  | EmailFormFieldType

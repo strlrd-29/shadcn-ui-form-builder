@@ -16,6 +16,9 @@ export function generateZodSchema(formFields: FormField[]) {
       case FieldType.NUMBER_INPUT:
         fieldSchema = z.coerce.number()
         break
+      case FieldType.EMAIL:
+        fieldSchema = z.string().email()
+        break
     }
     formSchemaObject[field.name] = fieldSchema as z.ZodTypeAny // Ensure fieldSchema is of type ZodTypeAny
   })

@@ -69,6 +69,17 @@ function renderFormFieldComponent({
           <FormMessage />
         </FormItem>
       )
+    case FieldType.EMAIL:
+      return (
+        <FormItem>
+          <FormLabel>{formField.label}</FormLabel>
+          <FormControl>
+            <Input placeholder={formField.placeholder} {...field} />
+          </FormControl>
+          <FormDescription>{formField.description}</FormDescription>
+          <FormMessage />
+        </FormItem>
+      )
   }
 }
 
