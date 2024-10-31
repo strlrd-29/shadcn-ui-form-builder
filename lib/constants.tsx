@@ -5,6 +5,7 @@ import {
   CircleDotIcon,
   HashIcon,
   LockIcon,
+  SlidersHorizontalIcon,
   SquareCheckIcon,
   TextIcon,
   ToggleLeftIcon,
@@ -135,5 +136,15 @@ export const fields: FormField[] = [
     placeholder: "super-secret-123",
     description: "Enter your password.",
     Icon: LockIcon,
+  },
+  {
+    type: FieldType.SLIDER,
+    name: "Slider",
+    label: "Slider",
+    Icon: SlidersHorizontalIcon,
+    min: 0,
+    max: 100,
+    step: 10,
+    defaultValue: 50,
   },
 ]

@@ -36,6 +36,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { FormFieldWrapper } from "@/components/form-field-wrapper"
@@ -252,6 +253,30 @@ export function renderFormFieldComponent({
         <FormFieldWrapper {...formField}>
           <PasswordInput placeholder={formField.placeholder} {...field} />
         </FormFieldWrapper>
+      )
+    case FieldType.SLIDER:
+      return (
+        <FormItem>
+          <FormLabel>{formField.label}</FormLabel>
+          <FormControl>
+            <Slider
+              min={formField.min}
+              max={formField.max}
+              step={formField.step}
+              defaultValue={[formField.defaultValue]}
+              onValueChange={(value) => {
+                field.onChange(value[0])
+              }}
+            />
+          </FormControl>
+          <FormDescription>
+            {formField.description} Selected value is{" "}
+            {field.value !== undefined ? field.value : formField.defaultValue},
+            minimun valus is {formField.min}, maximim values is {formField.max},
+            step size is {formField.step}
+          </FormDescription>
+          <FormMessage />
+        </FormItem>
       )
   }
 }

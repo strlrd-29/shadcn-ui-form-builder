@@ -43,6 +43,9 @@ export function generateZodSchema(formFields: FormField[]) {
       case FieldType.PASSWORD:
         fieldSchema = z.string()
         break
+      case FieldType.SLIDER:
+        fieldSchema = z.coerce.number()
+        break
     }
     formSchemaObject[field.name] = fieldSchema
   })
