@@ -1,14 +1,14 @@
 import {
-  AtSign,
-  Calendar,
-  ChevronsUpDown,
-  CircleDot,
-  Hash,
-  Lock,
-  SquareCheck,
-  Text,
-  ToggleLeft,
-  Type,
+  AtSignIcon,
+  CalendarIcon,
+  ChevronsUpDownIcon,
+  CircleDotIcon,
+  HashIcon,
+  LockIcon,
+  SquareCheckIcon,
+  TextIcon,
+  ToggleLeftIcon,
+  TypeIcon,
 } from "lucide-react"
 
 import { FieldType, type FormField } from "@/types/field"
@@ -20,7 +20,7 @@ export const fields: FormField[] = [
     label: "Username",
     placeholder: "shadcn",
     description: "This is your public display name.",
-    Icon: Type,
+    Icon: TypeIcon,
   },
   {
     type: FieldType.TEXTAREA,
@@ -28,7 +28,7 @@ export const fields: FormField[] = [
     label: "Bio",
     placeholder: "Tell us a little bit about yourself",
     description: "You can @mention other users and organizations.",
-    Icon: Text,
+    Icon: TextIcon,
   },
   {
     type: FieldType.NUMBER_INPUT,
@@ -36,7 +36,7 @@ export const fields: FormField[] = [
     label: "Age",
     placeholder: "24",
     description: "Input your age in dog years.",
-    Icon: Hash,
+    Icon: HashIcon,
   },
   {
     type: FieldType.EMAIL,
@@ -44,7 +44,7 @@ export const fields: FormField[] = [
     label: "Email",
     placeholder: "m@example.com",
     description: "We won't spam you, we promise.",
-    Icon: AtSign,
+    Icon: AtSignIcon,
   },
   {
     type: FieldType.CHECKBOX,
@@ -52,7 +52,7 @@ export const fields: FormField[] = [
     label: "Use different settings for my mobile devices",
     description:
       "You can manage your mobile notifications in the mobile settings page.",
-    Icon: SquareCheck,
+    Icon: SquareCheckIcon,
   },
   {
     type: FieldType.SELECT,
@@ -60,7 +60,7 @@ export const fields: FormField[] = [
     label: "Email",
     placeholder: "Select a verified email to display",
     description: "You can manage email addresses in your email settings.",
-    Icon: ChevronsUpDown,
+    Icon: ChevronsUpDownIcon,
     choices: [
       {
         value: "m@example.com",
@@ -81,13 +81,13 @@ export const fields: FormField[] = [
     name: "Date",
     label: "Date of birth",
     description: "Your date of birth is used to calculate your age.",
-    Icon: Calendar,
+    Icon: CalendarIcon,
   },
   {
     type: FieldType.RADIO_GROUP,
     name: "Radio Group",
     label: "Notify me about...",
-    Icon: CircleDot,
+    Icon: CircleDotIcon,
     choices: [
       {
         value: "all",
@@ -108,13 +108,13 @@ export const fields: FormField[] = [
     name: "Switch",
     label: "Marketing emails",
     description: "Receive emails about new products, features, and more.",
-    Icon: ToggleLeft,
+    Icon: ToggleLeftIcon,
   },
   {
     type: FieldType.COMBOBOX,
     name: "Combobox",
     label: "Language",
-    Icon: ChevronsUpDown,
+    Icon: ChevronsUpDownIcon,
     description: "This is the language that will be used in the dashboard.",
     choices: [
       { label: "English", value: "en" },
@@ -134,6 +134,6 @@ export const fields: FormField[] = [
     label: "Password",
     placeholder: "super-secret-123",
     description: "Enter your password.",
-    Icon: Lock,
+    Icon: LockIcon,
   },
 ]
