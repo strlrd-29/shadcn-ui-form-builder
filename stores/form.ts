@@ -11,6 +11,10 @@ export const useFormStore = create<FormState>((set, get) => ({
     set({ formFields: [...get().formFields, formField] })
   },
   deleteFormField: (fieldName) => {
-    console.info(fieldName)
+    set({
+      formFields: get().formFields.filter(
+        (formField) => formField.name !== fieldName
+      ),
+    })
   },
 }))

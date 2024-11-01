@@ -88,9 +88,7 @@ export function FormEditor() {
           <DragOverlay className="bg-background">
             {activeFormField ? <Field formField={activeFormField} /> : <></>}
           </DragOverlay>
-          <Button type="submit" className="w-fit">
-            Submit
-          </Button>
+          <Button type="submit">Submit</Button>
         </form>
       </Form>
     </DndContext>
