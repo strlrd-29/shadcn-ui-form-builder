@@ -10,6 +10,7 @@ const generateImports = (formFields: FormField[]) => {
     `import { useForm } from "react-hook-form"`,
     `import { z } from "zod"\n`,
     `import { cn } from "@/lib/utils"`,
+    `import { toast } from "@/hooks/use-toast"`,
     `import { Button } from "@/components/ui/button"`,
     `import {
   Form,
@@ -116,19 +117,23 @@ export const generateFormCode = (formFields: FormField[]) => {
   const formSchema = getZodSchemaString(formFields)
   const constants = Array.from(generateConstants(formFields)).join("\n")
   const component = `
-export default function MyForm() {
+export function MyForm() {
   ${constants}
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema)
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      console.info(values);
-    } catch (error) {
-      console.error("Form submission error", error);
-    }
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] overflow-auto rounded-md bg-slate-950 p-4">
+          <code className="overflow-auto text-white">
+            {JSON.stringify(values, null, 2)}
+          </code>
+        </pre>
+      ),
+    })
   }
 
   return (
