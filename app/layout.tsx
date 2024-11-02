@@ -33,7 +33,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={cn(fontSans.variable, fontMono.variable)}>
+      <body className={cn(fontSans.variable, fontMono.variable, "dark")}>
         {children}
       </body>
     </html>
