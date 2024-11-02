@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils"
 
 import "./globals.css"
 
+import { Toaster } from "@/components/ui/toaster"
+
 export const metadata: Metadata = {
   title: {
     default: "Shadcn Form Builder",
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={cn(fontSans.variable, fontMono.variable, "dark")}>
         {children}
+        <Toaster />
       </body>
     </html>
   )

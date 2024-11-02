@@ -21,6 +21,7 @@ import { useShallow } from "zustand/shallow"
 import { FormField } from "@/types/field"
 import { FormState } from "@/types/form-store"
 import { generateZodSchema } from "@/lib/form-schema"
+import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Field } from "@/components/field"
@@ -43,7 +44,16 @@ export function FormEditor() {
   })
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.info(values)
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] overflow-auto rounded-md bg-slate-950 p-4">
+          <code className="overflow-auto text-white">
+            {JSON.stringify(values, null, 2)}
+          </code>
+        </pre>
+      ),
+    })
   }
 
   function handleDragEnd(event: DragEndEvent) {

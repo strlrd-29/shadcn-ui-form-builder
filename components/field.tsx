@@ -44,6 +44,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           variant="ghost"
           className="absolute -left-10 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100"
           onClick={() => deleteFormfield(formField.name)}
+          type="button"
         >
           <Trash2 className="size-4" />
         </Button>
