@@ -30,7 +30,7 @@ export function CopyBtn({ value }: CopyButtonProps) {
         copyToClipboard(value)
         setHasCopied(true)
       }}
-      className="absolute right-4 top-4 invert [&_svg]:h-4 [&_svg]:w-4"
+      className="absolute right-4 top-4 invert dark:invert-0 [&_svg]:h-4 [&_svg]:w-4"
     >
       <span className="sr-only">Copy</span>
       {hasCopied ? <CheckIcon /> : <ClipboardIcon />}

@@ -30,9 +30,12 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     )
     return (
       <div
-        className={cn("group relative flex items-center gap-2 rounded-md", {
-          "rounded-md bg-muted opacity-60": isDragging,
-        })}
+        className={cn(
+          "group relative flex items-center gap-2 rounded-md border-2 border-dashed border-transparent",
+          {
+            "rounded-md border-foreground bg-muted opacity-60": isDragging,
+          }
+        )}
         style={style}
         ref={ref}
       >

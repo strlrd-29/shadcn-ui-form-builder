@@ -1,5 +1,6 @@
 import { FieldType, type FormField } from "@/types/field"
 import { getZodSchemaString } from "@/lib/form-schema"
+import { generateCodeSnippet } from "@/components/generate-form-field-code"
 
 const generateImports = (formFields: FormField[]) => {
   const importSet = new Set([
@@ -11,8 +12,10 @@ const generateImports = (formFields: FormField[]) => {
     `import { cn } from "@/lib/utils"`,
     `import { Button } from "@/components/ui/button"`,
     `import {
+  Form,
   FormControl,
   FormDescription,
+  FormField,
   FormItem,
   FormLabel,
   FormMessage,
@@ -86,5 +89,29 @@ const generateImports = (formFields: FormField[]) => {
 export const generateFormCode = (formFields: FormField[]) => {
   const imports = Array.from(generateImports(formFields)).join("\n")
   const formSchema = getZodSchemaString(formFields)
-  return imports + "\n\n" + formSchema
+  const component = `
+export default function MyForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema)
+  })
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      console.info(values);
+    } catch (error) {
+      console.error("Form submission error", error);
+    }
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-4">
+        ${formFields.map((field) => generateCodeSnippet(field)).join("\n        ")}
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+  )
+}
+`
+  return imports + "\n\n" + formSchema + "\n" + component
 }
