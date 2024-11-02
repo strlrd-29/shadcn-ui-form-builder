@@ -52,6 +52,7 @@ const generateImports = (formFields: FormField[]) => {
   PopoverTrigger,
 } from "@/components/ui/popover"`)
         importSet.add(`import { CalendarIcon } from "lucide-react"`)
+        importSet.add(`import { format } from "date-fns"`)
         break
       case FieldType.RADIO_GROUP:
         importSet.add(
