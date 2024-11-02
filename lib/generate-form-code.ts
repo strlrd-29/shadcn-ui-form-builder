@@ -76,7 +76,9 @@ const generateImports = (formFields: FormField[]) => {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"`)
-        importSet.add(`import { ChevronsUpDownIcon } from "lucide-react"`)
+        importSet.add(
+          `import { ChevronsUpDownIcon, CheckIcon } from "lucide-react"`
+        )
         break
       case FieldType.SLIDER:
         importSet.add(`import { Slider } from "@/components/ui/slider"`)
@@ -87,11 +89,36 @@ const generateImports = (formFields: FormField[]) => {
   return importSet
 }
 
+export const generateConstants = (formFields: FormField[]): Set<string> => {
+  const constantSet: Set<string> = new Set()
+
+  formFields.forEach((field) => {
+    if (field.type === FieldType.COMBOBOX) {
+      constantSet.add(`const choices = [
+    { label: "English", value: "en" },
+    { label: "French", value: "fr" },
+    { label: "German", value: "de" },
+    { label: "Spanish", value: "es" },
+    { label: "Portuguese", value: "pt" },
+    { label: "Russian", value: "ru" },
+    { label: "Japanese", value: "ja" },
+    { label: "Korean", value: "ko" },
+    { label: "Chinese", value: "zh" },
+  ]`)
+    }
+  })
+
+  return constantSet
+}
+
 export const generateFormCode = (formFields: FormField[]) => {
   const imports = Array.from(generateImports(formFields)).join("\n")
   const formSchema = getZodSchemaString(formFields)
+  const constants = Array.from(generateConstants(formFields)).join("\n")
   const component = `
 export default function MyForm() {
+  ${constants}
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema)
   })

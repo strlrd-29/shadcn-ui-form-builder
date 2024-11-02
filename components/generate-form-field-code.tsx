@@ -242,6 +242,69 @@ export const generateCodeSnippet = (field: FormField) => {
             </FormItem>
           )}
         />`
+    case FieldType.COMBOBOX:
+      return `<FormField
+          control={form.control}
+          name="${field.name}"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>${field.label}</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? choices.find(
+                            (choice) => choice.value === field.value
+                          )?.label
+                        : "Select language"}
+                      <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="p-0" align="start">
+                  <Command>
+                    <CommandInput placeholder="Search language..." />
+                    <CommandList>
+                      <CommandEmpty>No language found.</CommandEmpty>
+                      <CommandGroup>
+                        {choices.map((choice) => (
+                          <CommandItem
+                            value={choice.label}
+                            key={choice.value}
+                            onSelect={() => field.onChange(choice.value)}
+                          >
+                            <CheckIcon
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                choice.value === field.value
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            {choice.label}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+              ${
+                field.description &&
+                `<FormDescription>${field.description}</FormDescription>`
+              }
+              <FormMessage />
+            </FormItem>
+          )}
+        />`
     default:
       return null
   }
