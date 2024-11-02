@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import {
   SidebarInset,
   SidebarProvider,
@@ -55,11 +53,7 @@ export default function Home() {
               <FormEditor />
             </TabsContent>
             <TabsContent value="code">
-              <CodeBlock
-                code={`
-console.info("test")
-`}
-              />
+              <CodeBlock />
             </TabsContent>
           </div>
         </Tabs>

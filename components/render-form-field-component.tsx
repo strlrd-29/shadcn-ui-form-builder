@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react"
+import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react"
 import type { ControllerRenderProps } from "react-hook-form"
 
 import { FieldType, type FormField as FormFieldType } from "@/types/field"
@@ -212,7 +212,7 @@ export function renderFormFieldComponent({
                         (choice) => choice.value === field.value
                       )?.label
                     : "Select language"}
-                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
               </FormControl>
             </PopoverTrigger>
@@ -228,7 +228,7 @@ export function renderFormFieldComponent({
                         key={choice.value}
                         onSelect={() => field.onChange(choice.value)}
                       >
-                        <Check
+                        <CheckIcon
                           className={cn(
                             "mr-2 h-4 w-4",
                             choice.value === field.value
