@@ -37,9 +37,6 @@ export function generateZodSchema(formFields: FormField[]) {
       case FieldType.COMBOBOX:
         fieldSchema = z.string()
         break
-      case FieldType.PASSWORD:
-        fieldSchema = z.string()
-        break
       case FieldType.SLIDER:
         fieldSchema = z.coerce.number()
         break
@@ -118,5 +115,5 @@ export const getZodSchemaString = (formFields: FormField[]): string => {
     })
     .join(",\n")
 
-  return `const formSchema = z.object({\n${schemaEntries}\n});`
+  return `const formSchema = z.object({\n${schemaEntries}\n})`
 }

@@ -4,7 +4,6 @@ import {
   ChevronsUpDownIcon,
   CircleDotIcon,
   HashIcon,
-  LockIcon,
   SlidersHorizontalIcon,
   SquareCheckIcon,
   TextIcon,
@@ -128,14 +127,6 @@ export const fields: FormField[] = [
       { label: "Korean", value: "ko" },
       { label: "Chinese", value: "zh" },
     ],
-  },
-  {
-    type: FieldType.PASSWORD,
-    name: "Password",
-    label: "Password",
-    placeholder: "super-secret-123",
-    description: "Enter your password.",
-    Icon: LockIcon,
   },
   {
     type: FieldType.SLIDER,

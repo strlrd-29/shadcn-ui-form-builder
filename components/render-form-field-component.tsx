@@ -40,7 +40,6 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { FormFieldWrapper } from "@/components/form-field-wrapper"
-import { PasswordInput } from "@/components/password-input"
 
 interface RenderFormFieldComponentProps {
   formField: FormFieldType
@@ -248,12 +247,6 @@ export function renderFormFieldComponent({
           <FormMessage />
         </FormItem>
       )
-    case FieldType.PASSWORD:
-      return (
-        <FormFieldWrapper {...formField}>
-          <PasswordInput placeholder={formField.placeholder} {...field} />
-        </FormFieldWrapper>
-      )
     case FieldType.SLIDER:
       return (
         <FormItem>
@@ -270,7 +263,7 @@ export function renderFormFieldComponent({
             />
           </FormControl>
           <FormDescription>
-            {formField.description} Selected value is{" "}
+            Selected value is{" "}
             {field.value !== undefined ? field.value : formField.defaultValue},
             minimun valus is {formField.min}, maximim values is {formField.max},
             step size is {formField.step}
