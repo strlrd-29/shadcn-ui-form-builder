@@ -1,4 +1,5 @@
 import { FieldType, type FormField } from "@/types/field"
+import { getZodSchemaString } from "@/lib/form-schema"
 
 const generateImports = (formFields: FormField[]) => {
   const importSet = new Set([
@@ -84,5 +85,6 @@ const generateImports = (formFields: FormField[]) => {
 
 export const generateFormCode = (formFields: FormField[]) => {
   const imports = Array.from(generateImports(formFields)).join("\n")
-  return imports
+  const formSchema = getZodSchemaString(formFields)
+  return imports + "\n\n" + formSchema
 }
