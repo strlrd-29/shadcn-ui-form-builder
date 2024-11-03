@@ -40,7 +40,8 @@ export function SidebarRight({
                     onClick={() =>
                       addFormField({
                         ...field,
-                        name: `${field.name.toLowerCase().replace(" ", "_")}_${Math.random().toString().slice(-10)}`,
+                        id: Math.random().toString().slice(-10),
+                        name: `${field.name.toLowerCase().replaceAll(" ", "_")}_${Math.random().toString().slice(-10)}`,
                       })
                     }
                   >

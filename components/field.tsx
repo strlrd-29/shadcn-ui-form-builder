@@ -1,10 +1,11 @@
 import * as React from "react"
 import { useFormStore } from "@/stores/form"
-import { GripVertical, Trash2 } from "lucide-react"
+import { GripVertical, PenIcon, Trash2 } from "lucide-react"
 import type { UseFormReturn } from "react-hook-form"
 import { useShallow } from "zustand/shallow"
 
 import type { FormField as FormFieldType } from "@/types/field"
+import { FormState } from "@/types/form-store"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { FormField } from "@/components/ui/form"
@@ -23,11 +24,17 @@ export interface FieldProps {
   isDragging?: boolean
 }
 
+const selector = (state: FormState) => ({
+  deleteFormField: state.deleteFormField,
+  setSelectedFormField: state.setSelectedFormField,
+  setIsEditFormFieldOpen: state.setIsEditFormFieldOpen,
+})
+
 export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
   ({ formField, form, style, isDragging, ...props }, ref) => {
-    const deleteFormfield = useFormStore(
-      useShallow((state) => state.deleteFormField)
-    )
+    const { deleteFormField, setSelectedFormField, setIsEditFormFieldOpen } =
+      useFormStore(useShallow(selector))
+
     return (
       <div
         className={cn(
@@ -39,15 +46,27 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
         style={style}
         ref={ref}
       >
-        <Button
-          size="icon"
-          variant="ghost"
-          className="absolute -left-10 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100"
-          onClick={() => deleteFormfield(formField.name)}
-          type="button"
-        >
-          <Trash2 className="size-4" />
-        </Button>
+        <div className="absolute -left-12 top-1/2 flex -translate-y-1/2 flex-col gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => {
+              setSelectedFormField(formField.id)
+              setIsEditFormFieldOpen(true)
+            }}
+            type="button"
+          >
+            <PenIcon className="size-4" />
+          </Button>
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => deleteFormField(formField.id)}
+            type="button"
+          >
+            <Trash2 className="size-4" />
+          </Button>
+        </div>
         <div className="w-full">
           <FormField
             control={form?.control}
@@ -62,7 +81,7 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
           variant="ghost"
           type="button"
           {...props}
-          className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100"
+          className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100"
         >
           <GripVertical className="size-4" />
         </Button>

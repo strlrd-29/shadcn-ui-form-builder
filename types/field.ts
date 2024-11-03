@@ -16,6 +16,7 @@ export enum FieldType {
 }
 
 interface FormFieldBaseType {
+  id?: string
   type: FieldType
   name: string
   label: string
