@@ -54,7 +54,7 @@ export interface CheckboxFormFieldType extends FormFieldBaseType {
   type: FieldType.CHECKBOX
 }
 
-interface ChoiceItem {
+export interface ChoiceItem {
   value: any
   label: string
 }

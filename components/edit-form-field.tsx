@@ -16,6 +16,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { Textarea } from "@/components/ui/textarea"
+import { RenderEditFormFieldInputs } from "@/components/render-edit-form-field-inputs"
 
 const selector = (state: FormState) => ({
   isEditFormFieldOpen: state.isEditFormFieldOpen,
@@ -95,6 +96,7 @@ export function EditFormField() {
                 }
               />
             </div>
+            <RenderEditFormFieldInputs selectedField={selectedField} />
           </div>
         </SheetContent>
       )}
