@@ -2,7 +2,7 @@ import * as React from "react"
 import { useFormStore } from "@/stores/form"
 import { useShallow } from "zustand/shallow"
 
-import { ChoiceItem, FieldType, type FormField } from "@/types/field"
+import { FieldType, type FormField } from "@/types/field"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
