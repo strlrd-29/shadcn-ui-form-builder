@@ -31,7 +31,6 @@ interface FormFieldBaseType {
 
 export interface InputFormFieldType extends FormFieldBaseType {
   type: FieldType.INPUT
-  password?: boolean
   maxChars?: number
 }
 
