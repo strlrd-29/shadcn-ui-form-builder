@@ -96,15 +96,9 @@ export const generateConstants = (formFields: FormField[]): Set<string> => {
   formFields.forEach((field) => {
     if (field.type === FieldType.COMBOBOX) {
       constantSet.add(`const choices = [
-    { label: "English", value: "en" },
-    { label: "French", value: "fr" },
-    { label: "German", value: "de" },
-    { label: "Spanish", value: "es" },
-    { label: "Portuguese", value: "pt" },
-    { label: "Russian", value: "ru" },
-    { label: "Japanese", value: "ja" },
-    { label: "Korean", value: "ko" },
-    { label: "Chinese", value: "zh" },
+    ${field.choices
+      .map((choice) => `{ label: "${choice.label}", value: "${choice.value}" }`)
+      .join("\n\t")}
   ]`)
     }
   })
@@ -115,7 +109,7 @@ export const generateConstants = (formFields: FormField[]): Set<string> => {
 export const generateFormCode = (formFields: FormField[]) => {
   const imports = Array.from(generateImports(formFields)).join("\n")
   const formSchema = getZodSchemaString(formFields)
-  const constants = Array.from(generateConstants(formFields)).join("\n")
+  const constants = Array.from(generateConstants(formFields)).join("\n\n  ")
   const component = `
 export function MyForm() {
   ${constants}

@@ -24,7 +24,6 @@ export const SidebarFormFieldItem = React.forwardRef<
       {...props}
     >
       <SidebarMenuButton className="text-sm">
-        {<formField.Icon className="size-3" />}
         <span className="truncate">{formField.name}</span>
       </SidebarMenuButton>
     </SidebarMenuItem>

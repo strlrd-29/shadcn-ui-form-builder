@@ -94,9 +94,12 @@ export const generateCodeSnippet = (field: FormField) => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
+                  ${field.choices
+                    .map(
+                      (choice) =>
+                        `<SelectItem value="${choice.value}">${choice.label}</SelectItem>`
+                    )
+                    .join("\n\t\t\t\t  ")}
                 </SelectContent>
               </Select>
               ${
@@ -120,28 +123,19 @@ export const generateCodeSnippet = (field: FormField) => {
                   defaultValue={field.value}
                   className="flex flex-col space-y-1"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  ${field.choices
+                    .map(
+                      (choice) =>
+                        `<FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="all" />
+                      <RadioGroupItem value="${choice.value}" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      All new messages
+                      ${choice.label}
                     </FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="mentions" />
-                    </FormControl>
-                    <FormLabel className="font-normal">
-                      Direct messages and mentions
-                    </FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="none" />
-                    </FormControl>
-                    <FormLabel className="font-normal">Nothing</FormLabel>
-                  </FormItem>
+                  </FormItem>`
+                    )
+                    .join("\n\t\t\t\t  ")}
                 </RadioGroup>
               </FormControl>
               <FormMessage />

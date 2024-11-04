@@ -100,15 +100,18 @@ export function renderFormFieldComponent({
       return (
         <FormItem>
           <FormLabel>{formField.label}</FormLabel>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select onValueChange={field.onChange} value={field.value}>
             <FormControl>
               <SelectTrigger>
                 <SelectValue placeholder={formField.placeholder} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {formField.choices.map((choice) => (
-                <SelectItem value={choice.value} key={choice.value}>
+              {formField.choices.map((choice, idx) => (
+                <SelectItem
+                  value={choice.value !== "" ? choice.value : "hello"}
+                  key={idx}
+                >
                   {choice.label}
                 </SelectItem>
               ))}
@@ -163,10 +166,10 @@ export function renderFormFieldComponent({
               defaultValue={field.value}
               className="flex flex-col space-y-1"
             >
-              {formField.choices.map((choice) => (
+              {formField.choices.map((choice, idx) => (
                 <FormItem
                   className="flex items-center space-x-3 space-y-0"
-                  key={choice.value}
+                  key={idx}
                 >
                   <FormControl>
                     <RadioGroupItem value={choice.value} />
@@ -221,10 +224,10 @@ export function renderFormFieldComponent({
                 <CommandList>
                   <CommandEmpty>No language found.</CommandEmpty>
                   <CommandGroup>
-                    {formField.choices.map((choice) => (
+                    {formField.choices.map((choice, idx) => (
                       <CommandItem
-                        value={choice.label}
-                        key={choice.value}
+                        value={choice.value}
+                        key={idx}
                         onSelect={() => field.onChange(choice.value)}
                       >
                         <CheckIcon
