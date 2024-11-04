@@ -256,7 +256,7 @@ export function renderFormFieldComponent({
               min={formField.min}
               max={formField.max}
               step={formField.step}
-              defaultValue={[formField.defaultValue]}
+              defaultValue={[formField.default as number]}
               onValueChange={(value) => {
                 field.onChange(value[0])
               }}
@@ -264,7 +264,7 @@ export function renderFormFieldComponent({
           </FormControl>
           <FormDescription>
             Selected value is{" "}
-            {field.value !== undefined ? field.value : formField.defaultValue},
+            {field.value !== undefined ? field.value : formField.default},
             minimun valus is {formField.min}, maximim values is {formField.max},
             step size is {formField.step}
           </FormDescription>

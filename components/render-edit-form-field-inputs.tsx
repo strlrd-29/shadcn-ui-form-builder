@@ -92,7 +92,55 @@ export const RenderEditFormFieldInputs = ({
     case FieldType.SWITCH:
     case FieldType.CHECKBOX:
     case FieldType.DATE:
-    case FieldType.SLIDER:
       return <p>hello world</p>
+    case FieldType.SLIDER:
+      return (
+        <>
+          <div className="flex items-center gap-2">
+            <div>
+              <Label htmlFor="min">Minumum value</Label>
+              <Input
+                id="min"
+                placeholder="0"
+                value={selectedField.min}
+                onChange={(e) =>
+                  updateFormField({
+                    ...selectedField,
+                    min: parseFloat(e.target.value),
+                  })
+                }
+              />
+            </div>
+            <div>
+              <Label htmlFor="step">Step</Label>
+              <Input
+                id="step"
+                placeholder="1"
+                value={selectedField.step}
+                onChange={(e) =>
+                  updateFormField({
+                    ...selectedField,
+                    step: parseFloat(e.target.value),
+                  })
+                }
+              />
+            </div>
+            <div>
+              <Label htmlFor="max">Maximum value</Label>
+              <Input
+                id="max"
+                placeholder="100"
+                value={selectedField.max}
+                onChange={(e) =>
+                  updateFormField({
+                    ...selectedField,
+                    max: parseFloat(e.target.value),
+                  })
+                }
+              />
+            </div>
+          </div>
+        </>
+      )
   }
 }

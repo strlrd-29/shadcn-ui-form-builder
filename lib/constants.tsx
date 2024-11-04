@@ -136,6 +136,6 @@ export const fields: FormField[] = [
     min: 0,
     max: 100,
     step: 10,
-    defaultValue: 50,
+    default: 50,
   },
 ]

@@ -86,7 +86,6 @@ export interface SliderFormFieldType extends FormFieldBaseType {
   min: number
   max: number
   step: number
-  defaultValue: number
 }
 
 export type FormField =
