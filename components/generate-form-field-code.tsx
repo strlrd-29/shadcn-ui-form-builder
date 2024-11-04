@@ -184,7 +184,7 @@ export const generateCodeSnippet = (field: FormField) => {
                   min={${field.min}}
                   max={${field.max}}
                   step={${field.step}}
-                  defaultValue={${[field.defaultValue]}}
+                  defaultValue={${[field.default]}}
                   onValueChange={(value) => {
                     field.onChange(value[0])
                   }}
@@ -192,7 +192,7 @@ export const generateCodeSnippet = (field: FormField) => {
               </FormControl>
               <FormDescription>
                 Selected value is{" "}
-                {field.value !== undefined ? field.value : ${field.defaultValue}},
+                {field.value !== undefined ? field.value : ${field.default}},
                 minimun valus is ${field.min}, maximim values is ${field.max},
                 step size is ${field.step}
               </FormDescription>
