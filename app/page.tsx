@@ -20,20 +20,11 @@ export default function Home() {
           </div>
         </header>
         <Tabs defaultValue="preview">
-          <div className="mx-auto flex w-full flex-col gap-4 rounded-md border shadow-sm md:w-2/3">
+          <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 rounded-md border shadow-sm">
             <div className="flex items-center gap-1.5 border-b p-4">
-              <div
-                className="h-2.5 w-2.5 rounded-full bg-red-500"
-                data-v-241c1152=""
-              ></div>
-              <div
-                className="h-2.5 w-2.5 rounded-full bg-yellow-500"
-                data-v-241c1152=""
-              ></div>
-              <div
-                className="h-2.5 w-2.5 rounded-full bg-green-500"
-                data-v-241c1152=""
-              ></div>
+              <div className="h-2.5 w-2.5 rounded-full bg-red-500"></div>
+              <div className="h-2.5 w-2.5 rounded-full bg-yellow-500"></div>
+              <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
             </div>
             <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-1">
               <TabsTrigger
