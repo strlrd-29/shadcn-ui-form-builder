@@ -8,7 +8,6 @@ import { CodeBlock } from "@/components/code-block"
 import { EditFormField } from "@/components/edit-form-field"
 import { FormEditor } from "@/components/form-editor"
 import { SidebarLeft } from "@/components/sidebar-left"
-import { SidebarRight } from "@/components/sidebar-right"
 
 export default function Home() {
   return (
@@ -60,7 +59,6 @@ export default function Home() {
         </Tabs>
         <EditFormField />
       </SidebarInset>
-      <SidebarRight />
     </SidebarProvider>
   )
 }

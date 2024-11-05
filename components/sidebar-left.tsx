@@ -2,17 +2,10 @@
 
 import * as React from "react"
 import { useFormStore } from "@/stores/form"
-import {
-  DndContext,
-  DragEndEvent,
-  DragOverlay,
-  DragStartEvent,
-} from "@dnd-kit/core"
-import { arrayMove, SortableContext } from "@dnd-kit/sortable"
 import { useShallow } from "zustand/shallow"
 
-import { FormField } from "@/types/field"
 import { FormState } from "@/types/form-store"
+import { fields } from "@/lib/constants"
 import {
   Sidebar,
   SidebarContent,
@@ -21,43 +14,24 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Logo } from "@/components/logo"
-import { SortableSidebarFormFieldItem } from "@/components/sortable-sidebar-form-field-item"
 
 const selector = (state: FormState) => ({
-  formFields: state.formFields,
-  setFormFields: state.setFormFields,
+  addFormField: state.addFormField,
+  setIsEditFormFieldOpen: state.setIsEditFormFieldOpen,
+  setSelectedFormField: state.setSelectedFormField,
 })
 
 export function SidebarLeft({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
-  const [activeFormField, setActiveFormField] =
-    React.useState<FormField | null>(null)
-  const { formFields, setFormFields } = useFormStore(useShallow(selector))
-
-  function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event
-
-    if (over && active.id !== over.id) {
-      const oldIndex = formFields.findIndex((field) => field.name === active.id)
-      const newIndex = formFields.findIndex((field) => field.name === over.id)
-
-      setFormFields(arrayMove(formFields, oldIndex, newIndex))
-    }
-    setActiveFormField(null)
-  }
-
-  function handleDragStart(event: DragStartEvent) {
-    const { active } = event
-    const formField = formFields.find((field) => field.name === active.id)
-    if (formField) {
-      setActiveFormField(formField)
-    }
-  }
+  const { addFormField, setSelectedFormField, setIsEditFormFieldOpen } =
+    useFormStore(useShallow(selector))
 
   return (
     <Sidebar className="border-r-0" {...props}>
@@ -72,30 +46,30 @@ export function SidebarLeft({
       <SidebarSeparator />
       <SidebarContent>
         <SidebarGroup>
-          <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-            <SidebarGroupLabel>Form fields</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SortableContext
-                  items={formFields.map((formField) => formField.name)}
-                >
-                  {formFields.map((field) => (
-                    <SortableSidebarFormFieldItem
-                      key={field.name}
-                      formField={field}
-                    />
-                  ))}
-                </SortableContext>
-                <DragOverlay className="bg-background">
-                  {activeFormField ? (
-                    <SortableSidebarFormFieldItem formField={activeFormField} />
-                  ) : (
-                    <></>
-                  )}
-                </DragOverlay>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </DndContext>
+          <SidebarGroupLabel>Fields</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {fields.map((field) => (
+                <SidebarMenuItem key={field.name}>
+                  <SidebarMenuButton
+                    onClick={() => {
+                      const newFormField = {
+                        ...field,
+                        id: Math.random().toString().slice(-10),
+                        name: `${field.name.toLowerCase().replaceAll(" ", "_")}_${Math.random().toString().slice(-10)}`,
+                      }
+                      addFormField(newFormField)
+                      setSelectedFormField(newFormField.id)
+                      setIsEditFormFieldOpen(true)
+                    }}
+                  >
+                    <field.Icon />
+                    <span>{field.name}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
