@@ -8,11 +8,13 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Arrow } from "@/components/arrow"
 import { ClearForm } from "@/components/clear-form"
 import { CodeBlock } from "@/components/code-block"
 import { EditFormField } from "@/components/edit-form-field"
 import { FormEditor } from "@/components/form-editor"
 import { Icons } from "@/components/icons"
+import { ModeToggle } from "@/components/mode-toggle"
 import { SidebarLeft } from "@/components/sidebar-left"
 
 export default function Home() {
@@ -24,7 +26,7 @@ export default function Home() {
           <div className="flex flex-1 items-center gap-2">
             <SidebarTrigger />
           </div>
-          <div className="flex items-center gap-1">
+          <div className="relative flex items-center gap-1">
             <Link
               href="https://github.com/strlrd-29/shadcn-ui-form-builder"
               target="_blank"
@@ -59,6 +61,13 @@ export default function Home() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
+            <div className="absolute -bottom-24 -left-28 hidden flex-col items-center gap-2 md:flex">
+              <Arrow />
+              <p className="font-mono text-sm font-semibold">
+                Checkout the code and star ⭐ us on GitHub.
+              </p>
+            </div>
+            <ModeToggle />
           </div>
         </header>
         <Tabs defaultValue="preview" className="flex-1">

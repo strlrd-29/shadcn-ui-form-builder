@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { ThemeProvider } from "next-themes"
 
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -34,9 +35,11 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(fontSans.variable, fontMono.variable)}>
-        {children}
+        <ThemeProvider enableSystem attribute="class">
+          {children}
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>
