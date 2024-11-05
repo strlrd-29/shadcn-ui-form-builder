@@ -36,6 +36,9 @@ export const useFormStore = create<FormState>()(
           }
         })
       },
+      clearFormFields() {
+        set({ formFields: [], selectedFormField: "" })
+      },
     })),
     {
       name: "form-storage", // name of item in the storage (must be unique)

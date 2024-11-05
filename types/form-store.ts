@@ -10,4 +10,5 @@ export type FormState = {
   isEditFormFieldOpen: boolean
   setIsEditFormFieldOpen: (open: boolean) => void
   updateFormField: (formField: FormField) => void
+  clearFormFields: () => void
 }
