@@ -20,7 +20,7 @@ export function generateZodSchema(formFields: FormField[]) {
         fieldSchema = z.string().email()
         break
       case FieldType.CHECKBOX:
-        fieldSchema = z.boolean().default(false)
+        fieldSchema = z.boolean()
         break
       case FieldType.SELECT:
         fieldSchema = z.string()
@@ -32,7 +32,7 @@ export function generateZodSchema(formFields: FormField[]) {
         fieldSchema = z.string()
         break
       case FieldType.SWITCH:
-        fieldSchema = z.boolean().default(false)
+        fieldSchema = z.boolean()
         break
       case FieldType.COMBOBOX:
         fieldSchema = z.string()
@@ -45,6 +45,20 @@ export function generateZodSchema(formFields: FormField[]) {
   })
 
   return z.object(formSchemaObject)
+}
+
+export const generateDefaultValues = (
+  formFields: FormField[]
+): Record<string, any> => {
+  const defaultValues: Record<string, any> = {}
+
+  formFields.forEach((field) => {
+    if (field.default) {
+      defaultValues[field.name] = field.default
+    }
+  })
+
+  return defaultValues
 }
 
 export const zodSchemaToString = (schema: z.ZodTypeAny): string => {

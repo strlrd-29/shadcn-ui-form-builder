@@ -20,7 +20,7 @@ import { useShallow } from "zustand/shallow"
 
 import { FormField } from "@/types/field"
 import { FormState } from "@/types/form-store"
-import { generateZodSchema } from "@/lib/form-schema"
+import { generateDefaultValues, generateZodSchema } from "@/lib/form-schema"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
@@ -37,11 +37,23 @@ export function FormEditor() {
     React.useState<FormField | null>(null)
   const { formFields, setFormFields } = useFormStore(useShallow(selector))
 
-  const formSchema = generateZodSchema(formFields)
+  const formSchema = React.useMemo(
+    () => generateZodSchema(formFields),
+    [formFields]
+  )
+  const defaultValues = React.useMemo(
+    () => generateDefaultValues(formFields),
+    [formFields]
+  )
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues,
   })
+
+  React.useEffect(() => {
+    form.reset(defaultValues)
+  }, [form, defaultValues])
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     toast({

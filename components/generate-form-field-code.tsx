@@ -178,7 +178,7 @@ export const generateCodeSnippet = (field: FormField) => {
                   min={${field.min}}
                   max={${field.max}}
                   step={${field.step}}
-                  defaultValue={${[field.default]}}
+                  defaultValue={[${field.default}]}
                   onValueChange={(value) => {
                     field.onChange(value[0])
                   }}

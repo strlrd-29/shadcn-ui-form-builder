@@ -100,7 +100,11 @@ export function renderFormFieldComponent({
       return (
         <FormItem>
           <FormLabel>{formField.label}</FormLabel>
-          <Select onValueChange={field.onChange} value={field.value}>
+          <Select
+            onValueChange={field.onChange}
+            value={field.value}
+            defaultValue={formField.default as string}
+          >
             <FormControl>
               <SelectTrigger>
                 <SelectValue placeholder={formField.placeholder} />
@@ -163,7 +167,7 @@ export function renderFormFieldComponent({
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
-              defaultValue={field.value}
+              defaultValue={formField.default as string}
               className="flex flex-col space-y-1"
             >
               {formField.choices.map((choice, idx) => (

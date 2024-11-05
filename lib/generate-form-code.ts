@@ -106,15 +106,40 @@ export const generateConstants = (formFields: FormField[]): Set<string> => {
   return constantSet
 }
 
+export const generateDefaultValuesString = (fields: FormField[]): string => {
+  const defaultValues: Record<string, any> = {}
+  const dateFields: string[] = []
+
+  fields.forEach((field) => {
+    if (field.default) defaultValues[field.name] = field.default
+  })
+
+  if (Object.keys(defaultValues).length === 0 && dateFields.length === 0) {
+    return ""
+  }
+
+  // Convert defaultValues to string, handling both regular values and date fields
+  const regularValuesString =
+    Object.keys(defaultValues).length > 0
+      ? JSON.stringify(defaultValues, null, 6).slice(1, -1) // Remove the outer {}
+      : ""
+
+  const combinedString = regularValuesString
+
+  return `defaultValues: {${combinedString}\t},`
+}
+
 export const generateFormCode = (formFields: FormField[]) => {
   const imports = Array.from(generateImports(formFields)).join("\n")
   const formSchema = getZodSchemaString(formFields)
   const constants = Array.from(generateConstants(formFields)).join("\n\n  ")
+  const defaultValuesString = generateDefaultValuesString(formFields)
   const component = `
 export function MyForm() {
   ${constants}
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema)
+    resolver: zodResolver(formSchema),
+    ${defaultValuesString}
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
