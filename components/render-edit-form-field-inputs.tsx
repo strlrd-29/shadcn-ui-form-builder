@@ -156,36 +156,6 @@ export const RenderEditFormFieldInputs = ({
               }
             />
           </div>
-          <div className="flex items-center gap-2">
-            <div>
-              <Label htmlFor="min">Minumum value</Label>
-              <Input
-                id="min"
-                placeholder="minimum value"
-                value={selectedField.min}
-                onChange={(e) =>
-                  updateFormField({
-                    ...selectedField,
-                    min: parseInt(e.target.value),
-                  })
-                }
-              />
-            </div>
-            <div>
-              <Label htmlFor="max">Maximum value</Label>
-              <Input
-                id="max"
-                placeholder="maximum value"
-                value={selectedField.max}
-                onChange={(e) =>
-                  updateFormField({
-                    ...selectedField,
-                    max: parseInt(e.target.value),
-                  })
-                }
-              />
-            </div>
-          </div>
           <div>
             <Label htmlFor="default">Default</Label>
             <Input
