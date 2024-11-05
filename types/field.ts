@@ -26,7 +26,7 @@ interface FormFieldBaseType {
   description?: string
   placeholder?: string
   required?: boolean
-  default?: string | number | boolean
+  default?: string | number | boolean | Date
 }
 
 export interface InputFormFieldType extends FormFieldBaseType {

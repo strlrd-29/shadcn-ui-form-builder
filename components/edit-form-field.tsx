@@ -61,6 +61,7 @@ export function EditFormField() {
               <Label htmlFor="label">Label</Label>
               <Input
                 id="label"
+                placeholder="your field label..."
                 value={selectedField.label}
                 onChange={(e) =>
                   updateFormField({
@@ -74,6 +75,7 @@ export function EditFormField() {
               <Label htmlFor="description">Description</Label>
               <Textarea
                 id="description"
+                placeholder="your field description..."
                 value={selectedField.description}
                 onChange={(e) =>
                   updateFormField({
@@ -87,6 +89,7 @@ export function EditFormField() {
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
+                placeholder="your field name..."
                 value={selectedField.name}
                 onChange={(e) =>
                   updateFormField({
