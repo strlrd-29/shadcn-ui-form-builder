@@ -8,7 +8,7 @@ export function Arrow() {
       height="116.94398836439844"
       className="size-10 stroke-foreground"
     >
-      <g stroke-linecap="round">
+      <g strokeLinecap="round">
         <g transform="translate(10.526784272492023 107.34760582244392) rotate(0 49.65606765448513 -48.173843690484745)">
           <path
             d="M-0.53 -0.4 C10.75 -7.08, 50.27 -24.94, 66.88 -41.1 C83.5 -57.26, 93.86 -88.28, 99.16 -97.35 M1.4 -1.66 C12.59 -8.62, 49.88 -27.19, 66.03 -43.01 C82.18 -58.82, 92.89 -87.46, 98.31 -96.56"
