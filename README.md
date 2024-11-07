@@ -130,8 +130,6 @@ Project Link: [forms.ouassim.tech](https://forms.ouassim.tech)
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
 - [hasanharman/form-builder](https://github.com/hasanharman/form-builder)
 - [KryptXBSA/FormBuilder](https://github.com/KryptXBSA/FormBuilder)
 - [shadcn/ui](https://ui.shadcn.com/)
