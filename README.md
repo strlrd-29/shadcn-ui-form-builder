@@ -120,9 +120,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@strlrd29](https://twitter.com/strlrd29) - <me@ouassim.tech>
+Ghribi Ouassim Abdelmalek - [@strlrd29](https://twitter.com/strlrd29) - <me@ouassim.tech>
 
-Project Link: [https://github.com/strlrd-29/shadcn-ui-form-builder](https://github.com/strlrd-29/shadcn-ui-form-builder)
+Project Link: [forms.ouassim.tech](https://forms.ouassim.tech)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
