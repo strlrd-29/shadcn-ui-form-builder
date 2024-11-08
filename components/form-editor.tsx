@@ -90,29 +90,38 @@ export function FormEditor() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto flex w-3/4 flex-col gap-6 p-4"
-        >
-          <SortableContext
-            items={formFields.map((formField) => formField.name)}
-            strategy={verticalListSortingStrategy}
+      {formFields.length !== 0 ? (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="mx-auto flex w-3/4 flex-col gap-6 p-4"
           >
-            {formFields.map((formField) => (
-              <SortableField
-                formField={formField}
-                form={form}
-                key={formField.name}
-              />
-            ))}
-          </SortableContext>
-          <DragOverlay className="bg-background">
-            {activeFormField ? <Field formField={activeFormField} /> : <></>}
-          </DragOverlay>
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
+            <SortableContext
+              items={formFields.map((formField) => formField.name)}
+              strategy={verticalListSortingStrategy}
+            >
+              {formFields.map((formField) => (
+                <SortableField
+                  formField={formField}
+                  form={form}
+                  key={formField.name}
+                />
+              ))}
+            </SortableContext>
+            <DragOverlay className="bg-background">
+              {activeFormField ? <Field formField={activeFormField} /> : <></>}
+            </DragOverlay>
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
+      ) : (
+        <div className="grid place-items-center p-4">
+          <h3 className="text-2xl font-semibold">No Fields were added</h3>
+          <p className="text-muted-foreground">
+            Select fields from the sidebar...
+          </p>
+        </div>
+      )}
     </DndContext>
   )
 }
