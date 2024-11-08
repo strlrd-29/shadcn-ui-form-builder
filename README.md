@@ -83,6 +83,7 @@ Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Roadmap
 
+- [ ] Ability to have multiple fields on one line and to re-arrange them as you want.
 - [ ] Add More fields
   - [ ] File input
   - [ ] OTP input
@@ -90,6 +91,7 @@ Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
   - [ ] Phone input
 - [ ] Add choice to use [yup](https://github.com/jquense/yup?tab=readme-ov-file) validation
 - [ ] Add Form Templates.
+- [ ] Add more detailed customizations on fields (regex for text inputs for eg.)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
