@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <SidebarProvider>
       <SidebarLeft />
-      <SidebarInset className="px-4">
+      <SidebarInset className="overflow-x-hidden px-4">
         <header className="sticky top-0 flex h-14 shrink-0 items-center justify-between gap-2 bg-background">
           <div className="flex flex-1 items-center gap-2">
             <SidebarTrigger />
