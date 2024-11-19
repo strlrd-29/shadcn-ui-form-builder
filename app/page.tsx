@@ -16,7 +16,7 @@ import { Icons } from "@/components/icons"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SidebarLeft } from "@/components/sidebar-left"
 
-export default function Home() {
+export default async function Home() {
   return (
     <SidebarProvider>
       <SidebarLeft />
