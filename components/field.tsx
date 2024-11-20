@@ -4,12 +4,14 @@ import { GripVertical, PenIcon, Trash2 } from "lucide-react"
 import type { UseFormReturn } from "react-hook-form"
 import { useShallow } from "zustand/shallow"
 
-import type { FormField as FormFieldType } from "@/types/field"
-import { FormState } from "@/types/form-store"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { FormField } from "@/components/ui/form"
 import { renderFormFieldComponent } from "@/components/render-form-field-component"
+import { TooltipWrapper } from "@/components/tooltip-wrapper"
+
+import type { FormField as FormFieldType } from "@/types/field"
+import { FormState } from "@/types/form-store"
 
 export interface FieldProps {
   formField: FormFieldType
@@ -47,25 +49,29 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
         ref={ref}
       >
         <div className="absolute -left-12 top-1/2 flex -translate-y-1/2 flex-col gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-          <Button
-            size="icon"
-            variant="ghost"
-            onClick={() => {
-              setSelectedFormField(formField.id)
-              setIsEditFormFieldOpen(true)
-            }}
-            type="button"
-          >
-            <PenIcon className="size-4" />
-          </Button>
-          <Button
-            size="icon"
-            variant="ghost"
-            onClick={() => deleteFormField(formField.id)}
-            type="button"
-          >
-            <Trash2 className="size-4" />
-          </Button>
+          <TooltipWrapper text="Edit field">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                setSelectedFormField(formField.id)
+                setIsEditFormFieldOpen(true)
+              }}
+              type="button"
+            >
+              <PenIcon className="size-4" />
+            </Button>
+          </TooltipWrapper>
+          <TooltipWrapper text="Delete field" side="bottom">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => deleteFormField(formField.id)}
+              type="button"
+            >
+              <Trash2 className="size-4" />
+            </Button>
+          </TooltipWrapper>
         </div>
         <div className="w-full">
           <FormField

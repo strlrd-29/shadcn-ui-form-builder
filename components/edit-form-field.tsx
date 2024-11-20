@@ -4,7 +4,6 @@ import * as React from "react"
 import { useFormStore } from "@/stores/form"
 import { useShallow } from "zustand/shallow"
 
-import { FormState } from "@/types/form-store"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
@@ -17,6 +16,8 @@ import {
 } from "@/components/ui/sheet"
 import { Textarea } from "@/components/ui/textarea"
 import { RenderEditFormFieldInputs } from "@/components/render-edit-form-field-inputs"
+
+import { FormState } from "@/types/form-store"
 
 const selector = (state: FormState) => ({
   isEditFormFieldOpen: state.isEditFormFieldOpen,

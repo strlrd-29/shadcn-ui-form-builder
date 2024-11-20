@@ -21,6 +21,7 @@ export const fields: FormField[] = [
     placeholder: "shadcn",
     description: "This is your public display name.",
     Icon: TypeIcon,
+    registryDependencies: ["input"],
   },
   {
     type: FieldType.TEXTAREA,
@@ -29,6 +30,7 @@ export const fields: FormField[] = [
     placeholder: "Tell us a little bit about yourself",
     description: "You can @mention other users and organizations.",
     Icon: TextIcon,
+    registryDependencies: ["textarea"],
   },
   {
     type: FieldType.NUMBER_INPUT,
@@ -37,6 +39,7 @@ export const fields: FormField[] = [
     placeholder: "24",
     description: "Input your age in dog years.",
     Icon: HashIcon,
+    registryDependencies: ["input"],
   },
   {
     type: FieldType.EMAIL,
@@ -45,6 +48,7 @@ export const fields: FormField[] = [
     placeholder: "m@example.com",
     description: "We won't spam you, we promise.",
     Icon: AtSignIcon,
+    registryDependencies: ["input"],
   },
   {
     type: FieldType.CHECKBOX,
@@ -53,6 +57,7 @@ export const fields: FormField[] = [
     description:
       "You can manage your mobile notifications in the mobile settings page.",
     Icon: SquareCheckIcon,
+    registryDependencies: ["checkbox"],
   },
   {
     type: FieldType.SELECT,
@@ -75,6 +80,7 @@ export const fields: FormField[] = [
         label: "m@support.com",
       },
     ],
+    registryDependencies: ["select"],
   },
   {
     type: FieldType.DATE,
@@ -82,6 +88,7 @@ export const fields: FormField[] = [
     label: "Date of birth",
     description: "Your date of birth is used to calculate your age.",
     Icon: CalendarIcon,
+    registryDependencies: ["popover", "calendar"],
   },
   {
     type: FieldType.RADIO_GROUP,
@@ -102,6 +109,7 @@ export const fields: FormField[] = [
         label: "Nothing",
       },
     ],
+    registryDependencies: ["radio-group"],
   },
   {
     type: FieldType.SWITCH,
@@ -109,6 +117,7 @@ export const fields: FormField[] = [
     label: "Marketing emails",
     description: "Receive emails about new products, features, and more.",
     Icon: ToggleLeftIcon,
+    registryDependencies: ["switch"],
   },
   {
     type: FieldType.COMBOBOX,
@@ -127,6 +136,7 @@ export const fields: FormField[] = [
       { label: "Korean", value: "ko" },
       { label: "Chinese", value: "zh" },
     ],
+    registryDependencies: ["popover", "command"],
   },
   {
     type: FieldType.SLIDER,
@@ -137,5 +147,6 @@ export const fields: FormField[] = [
     max: 100,
     step: 10,
     default: 50,
+    registryDependencies: ["slider"],
   },
 ]

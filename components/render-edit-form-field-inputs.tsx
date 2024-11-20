@@ -5,7 +5,6 @@ import { produce } from "immer"
 import { CalendarIcon, Plus, Trash2 } from "lucide-react"
 import { useShallow } from "zustand/shallow"
 
-import { FieldType, type FormField } from "@/types/field"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -24,6 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+
+import { FieldType, type FormField } from "@/types/field"
 
 interface RenderEditFormFieldInputsProps {
   selectedField: FormField

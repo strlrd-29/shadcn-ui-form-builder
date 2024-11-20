@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import "./globals.css"
 
 import { Toaster } from "@/components/ui/toaster"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://forms.ouassim.tech"),
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body className={cn(fontSans.variable, fontMono.variable)}>
         <ThemeProvider enableSystem attribute="class">
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
         <Toaster />
       </body>

@@ -4,7 +4,6 @@ import * as React from "react"
 import { useFormStore } from "@/stores/form"
 import { useShallow } from "zustand/shallow"
 
-import { FormState } from "@/types/form-store"
 import { fields } from "@/lib/constants"
 import {
   Sidebar,
@@ -20,6 +19,8 @@ import {
   SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Logo } from "@/components/logo"
+
+import { FormState } from "@/types/form-store"
 
 const selector = (state: FormState) => ({
   addFormField: state.addFormField,
