@@ -98,7 +98,9 @@ export const generateConstants = (formFields: FormField[]): Set<string> => {
     if (field.type === FieldType.COMBOBOX) {
       constantSet.add(`const choices = [
     ${field.choices
-      .map((choice) => `{ label: "${choice.label}", value: "${choice.value}" }`)
+      .map(
+        (choice) => `{ label: "${choice.label}", value: "${choice.value}" },`
+      )
       .join("\n\t")}
   ]`)
     }

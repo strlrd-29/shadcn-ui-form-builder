@@ -21,6 +21,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
+import { TooltipWrapper } from "./tooltip-wrapper"
+
 export function Cli() {
   const { toast } = useToast()
   const formFields = useFormStore((state) => state.formFields)
@@ -59,13 +61,18 @@ export function Cli() {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button size="sm" className="absolute bottom-2 right-4">
-          CLI
-          <SquareTerminalIcon className="size-4" />
-        </Button>
-      </DialogTrigger>
-      <DialogContent>
+      <TooltipWrapper text="Use Shadcn CLI">
+        <DialogTrigger asChild>
+          <Button size="sm" className="absolute bottom-2 right-4">
+            CLI
+            <SquareTerminalIcon className="size-4" />
+          </Button>
+        </DialogTrigger>
+      </TooltipWrapper>
+      <DialogContent
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        onOpenAutoFocus={(e) => e.preventDefault()}
+      >
         <DialogHeader>
           <DialogTitle>Add through the shadcn CLI</DialogTitle>
           <DialogDescription>
@@ -75,7 +82,7 @@ export function Cli() {
           </DialogDescription>
         </DialogHeader>
         <button
-          className="hover:border-alpha-600 flex h-8 w-full items-center justify-between gap-1 truncate rounded-md border px-3 pr-1.5 text-left font-mono text-sm font-normal transition-all"
+          className="hover:border-alpha-600 flex h-8 w-full items-center justify-between gap-1 truncate rounded-md border px-3 pr-1.5 text-left font-mono text-sm font-normal transition-all disabled:pointer-events-none disabled:opacity-50"
           onClick={copyCommand}
           disabled={isLoading}
         >
