@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ClearForm } from "@/components/clear-form"
+import { Cli } from "@/components/cli"
 import { CodeBlock } from "@/components/code-block"
 import { EditFormField } from "@/components/edit-form-field"
 import { FormEditor } from "@/components/form-editor"
@@ -71,7 +72,7 @@ export default async function Home() {
               <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
               <ClearForm />
             </div>
-            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-1">
+            <TabsList className="relative w-full justify-start rounded-none border-b bg-transparent p-1">
               <TabsTrigger
                 value="preview"
                 className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
@@ -84,6 +85,7 @@ export default async function Home() {
               >
                 Code
               </TabsTrigger>
+              <Cli />
             </TabsList>
             <TabsContent value="preview">
               <FormEditor />
