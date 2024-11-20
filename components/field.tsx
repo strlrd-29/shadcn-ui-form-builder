@@ -4,12 +4,13 @@ import { GripVertical, PenIcon, Trash2 } from "lucide-react"
 import type { UseFormReturn } from "react-hook-form"
 import { useShallow } from "zustand/shallow"
 
-import type { FormField as FormFieldType } from "@/types/field"
-import { FormState } from "@/types/form-store"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { FormField } from "@/components/ui/form"
 import { renderFormFieldComponent } from "@/components/render-form-field-component"
+
+import type { FormField as FormFieldType } from "@/types/field"
+import { FormState } from "@/types/form-store"
 
 export interface FieldProps {
   formField: FormFieldType

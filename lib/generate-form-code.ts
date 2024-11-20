@@ -1,6 +1,7 @@
-import { FieldType, type FormField } from "@/types/field"
 import { getZodSchemaString } from "@/lib/form-schema"
 import { generateCodeSnippet } from "@/components/generate-form-field-code"
+
+import { FieldType, type FormField } from "@/types/field"
 
 const generateImports = (formFields: FormField[]) => {
   const importSet = new Set([

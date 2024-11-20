@@ -18,14 +18,15 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useShallow } from "zustand/shallow"
 
-import { FormField } from "@/types/field"
-import { FormState } from "@/types/form-store"
 import { generateDefaultValues, generateZodSchema } from "@/lib/form-schema"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Field } from "@/components/field"
 import { SortableField } from "@/components/sortable-field"
+
+import { FormField } from "@/types/field"
+import { FormState } from "@/types/form-store"
 
 const selector = (state: FormState) => ({
   formFields: state.formFields,

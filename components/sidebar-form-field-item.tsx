@@ -1,8 +1,9 @@
 import * as React from "react"
 
-import type { FormField } from "@/types/field"
 import { cn } from "@/lib/utils"
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
+
+import type { FormField } from "@/types/field"
 
 export interface SidebarFormFieldItemProps {
   formField: FormField
